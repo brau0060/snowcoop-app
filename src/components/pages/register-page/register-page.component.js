@@ -85,7 +85,7 @@ export default {
     },
 
     onRegisterFailed(error) {
-      /*eslint disable */
+      /*eslint-disable */
       console.error(error);
 
     }

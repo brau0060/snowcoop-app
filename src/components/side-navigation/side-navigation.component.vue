@@ -4,7 +4,7 @@
       <div class="logo">
         <span>Snowcoop</span>
       </div>
-      <el-menu-item index="/dashboard">
+      <el-menu-item index="/dashboard" class="active">
         <span>Dashboard</span>
       </el-menu-item>
       <el-menu-item index="/list">
