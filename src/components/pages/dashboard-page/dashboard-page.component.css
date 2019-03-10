@@ -7,10 +7,18 @@
   font-weight: bold;
   font-style: normal;
   letter-spacing: 0.2px;
-  color: #00000
+  color: #000;
 }
 
 .name{
   margin-top: 120px;
   margin-left: 100px;
+}
+
+.el-container {
+  min-height: 100vh;
+}
+
+.el-container > .el-main {
+  padding: 0;
 }

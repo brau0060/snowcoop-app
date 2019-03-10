@@ -16,7 +16,7 @@ const store = new Vuex.Store({
     IS_LOGIN: state => {
       return !!state.token;
     },
-    // add name getter for the dashboard
+    // add name getter for the dashboard page
     USERNAME: state => {
       return state.user.firstName;
     }

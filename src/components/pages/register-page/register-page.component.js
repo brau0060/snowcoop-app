@@ -1,5 +1,13 @@
 export default {
   name: 'registerPage',
+  directives: {
+    focus: {
+      // directive definition
+      inserted: function (el) {
+        el.firstElementChild.focus()
+      }
+    }
+  },
   data() {
     var passwordValidate = (rule, value, callback) => {
       if (value === '') {

@@ -1,11 +1,10 @@
-import SideNavigation from './components/side-navigation/side-navigation.component.vue';
 import dashboardPage from './components/pages/dashboard-page/dashboard-page.component.vue';
 
 export default {
   name: 'app',
   components: {
-    SideNavigation,
-    dashboardPage,
+    // SideNavigation, ---Remove and move to dashboard page to fix back buton issue
+    dashboardPage
   },
   computed: {
     isLogIn() {

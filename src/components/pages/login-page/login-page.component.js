@@ -1,6 +1,16 @@
 export default {
   name: 'loginPage',
   components: {},
+  // custom directive v-focus
+  // autofocus the child element of el-input, being input with v-focus
+  directives: {
+    focus: {
+      // directive definition
+      inserted: function (el) {
+        el.firstElementChild.focus()
+      }
+    }
+  },
   data() {
     return {
       formData: {
@@ -52,5 +62,8 @@ export default {
       /* eslint-disable */
       console.error(error);
     },
+    
   }
+  
 };
+

@@ -1,5 +1,4 @@
 #sideNavigation {
-  height: 100%;
   width: 228px;
   box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
@@ -45,5 +44,8 @@ span{
  }
 
  li:hover span{
+  color: #1974e8;
+ }
+ .is-active span{
   color: #1974e8;
  }

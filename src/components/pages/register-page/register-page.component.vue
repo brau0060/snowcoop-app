@@ -12,7 +12,7 @@
              <el-row :gutter="20">
               <el-col :span="12">
                 <el-form-item :rules="rules.firstName" prop="firstName">
-                  <el-input placeholder="firstname" v-model="formData.firstName"></el-input>
+                  <el-input placeholder="firstname" v-model="formData.firstName" update:="true" v-focus></el-input>
                 </el-form-item>
               </el-col>
              <el-col :span="12">
@@ -36,6 +36,9 @@
                <el-form-item :rules="rules.passwordConfirm" prop="passwordConfirm">
                   <el-input type="password" placeholder="Confirm" v-model="formData.passwordConfirm" ></el-input>
                </el-form-item>
+             </el-col>
+              <el-col :span="24">
+                   <el-form-item :inline-message="rules.firstName.message"> </el-form-item>
              </el-col>
             </el-row>
        
