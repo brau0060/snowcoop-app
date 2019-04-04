@@ -1,10 +1,13 @@
 <template>
   <div id="listPage">
     <el-container>
-      <!-- Add side nav to dashboard -->
       <side-navigation/>
       <el-main>
-        {{pageInfo}}
+        <div class="list-wrapper">
+          <div class="map-view-wrapper">
+            <map-view v-if="addressList" v-bind:showList="true" v-bind:addressList="addressList"></map-view>
+          </div>
+        </div>
       </el-main>
     </el-container>
   </div>
