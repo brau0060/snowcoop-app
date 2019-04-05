@@ -4,7 +4,7 @@ import mapView from '../../shared/map-view/map-view.component.vue';
 
 export default {
   name: 'listPage',
-  component: {
+  components: {
     SideNavigation,
     mapView
   },
