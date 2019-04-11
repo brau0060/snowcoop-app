@@ -18,13 +18,22 @@ export default {
         password: null,
       },
       rules: {
-        email: [
-          { required: true, message: 'Please input email address', trigger: 'blur' },
-          { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
+        email: [{
+            required: true,
+            message: 'Please input email address',
+            trigger: 'blur'
+          },
+          {
+            type: 'email',
+            message: 'Please input correct email address',
+            trigger: ['blur', 'change']
+          }
         ],
-        password: [
-          { required: true, message: 'Please input password', trigger: 'blur' }
-        ]
+        password: [{
+          required: true,
+          message: 'Please input password',
+          trigger: 'blur'
+        }]
       },
       isFormValidated: false,
     };
@@ -62,8 +71,7 @@ export default {
       /* eslint-disable */
       console.error(error);
     },
-    
-  }
-  
-};
 
+  }
+
+};

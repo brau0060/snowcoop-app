@@ -4,8 +4,12 @@
       <side-navigation/>
       <el-main>
         <div class="list-wrapper">
-          <div class="map-view-wrapper">
-            <map-view v-if="addressList" v-bind:showList="true" v-bind:addressList="addressList"></map-view>
+          <div class="list-header"></div>
+          <span class="list-title">{{ `You have ${addressList.length} addresses to complete` }}</span>
+          <div class="list-view-wrapper">
+            <el-card class="map-view-card">
+              <map-view v-if="addressList" v-bind:showList="true" v-bind:addressList="addressList"></map-view>
+            </el-card>
           </div>
         </div>
       </el-main>
