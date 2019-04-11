@@ -1,10 +1,17 @@
 <template>
   <div id="listPage">
     <el-container>
-      <!-- Add side nav to dashboard -->
       <side-navigation/>
       <el-main>
-        {{pageInfo}}
+        <div class="list-wrapper">
+          <div class="list-header"></div>
+          <span class="list-title">{{ `You have ${addressList.length} addresses to complete` }}</span>
+          <div class="list-view-wrapper">
+            <el-card class="map-view-card">
+              <map-view v-if="addressList" v-bind:showList="true" v-bind:addressList="addressList"></map-view>
+            </el-card>
+          </div>
+        </div>
       </el-main>
     </el-container>
   </div>
