@@ -1,26 +1,25 @@
 // Immport SideNavigation
-import SideNavigation from '../../side-navigation/side-navigation.component.vue';
 import mapView from '../../shared/map-view/map-view.component.vue';
-
+import formAddAddress from './form-add-address/form-add-address.component.vue';
 export default {
   name: 'listPage',
   components: {
-    SideNavigation,
-    mapView
+    mapView,
+    formAddAddress
   },
   data() {
     return {
       addressList: null,
     }
   },
-  mounted() {
-    this.$store.dispatch('GET_ADDRESS_LIST').then(
-      addressList => {
-        this.addressList = addressList;
-        /* eslint-disable */
-        console.log(addressList);
-      }
-    )
+  mounted(){
+    /* eslint-disable */ 
+    console.log('mounted...');
+    this.$store.dispatch('GET_ADDRESS_LIST').then(addressList => {
+    this.addressList = addressList;
+    /* eslint-disable */
+    console.log(addressList);
+    });
   },
   // Add SideNavigation to components
   computed: {
@@ -36,4 +35,9 @@ export default {
       }
     }
   },
+  methods: {
+    showForm() {
+      this.$refs.formAddress.toggleForm(true);
+    }
+  }
 };

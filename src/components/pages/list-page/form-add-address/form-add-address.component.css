@@ -1,0 +1,22 @@
+.map-view-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.map-warpper {
+    width:100%
+}
+.address-list-warpper {
+    min-width: fit-content;
+    overflow-y: scroll;
+}
+
+.address-item {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+.address-item:hover,
+.current-place {
+    background-color: #a4d4f6;
+    color:#fff;
+}

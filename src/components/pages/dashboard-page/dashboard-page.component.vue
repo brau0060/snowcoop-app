@@ -1,10 +1,8 @@
 <template>
   <div id="dashboardPage">
     <el-container>
-      <!-- Add side nav to dashboard -->
-      <side-navigation/>
       <el-main>
-        <p class="name">Hi {{userInfo}}, welcome to Snowcoop</p>
+        <p class="name">Hi {{ $store.state.user.firstName }}, welcome to snowcoop</p>
       </el-main>
     </el-container>
   </div>

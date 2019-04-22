@@ -22,4 +22,19 @@
   font-family: Roboto;
   font-size: 24px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.list-header-button-wraper > button {
+  font-size: 18px;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: #1974e8;
+  color:white;
+  border:none;
+}
+.list-view-wrapper {
+  margin-top: 1rem;
 }

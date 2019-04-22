@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex';
 import AuthService from './services/auth.service';
-import Axios from 'axios'
+import AddressService from './services/address.service';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    token: null,
-    user: null,
+    token: null || JSON.parse(localStorage.getItem("token")),
+    user: null|| JSON.parse(localStorage.getItem("user")),
     addressList: null,
   },
   getters: {
@@ -16,12 +16,37 @@ const store = new Vuex.Store({
       return state.user;
     },
     IS_LOGIN: state => {
-      return !!state.token;
-    },
-    // add name getter for the dashboard page
-    USERNAME: state => {
-      return state.user.firstName;
-    },
+      if (state.token) {
+        AuthService.setHeader(state.token)
+      } else {
+        Vue.router.push('login')
+      }    
+    return !!state.token;
+  },
+  
+  //   IS_LOGIN: state => {
+  //     if (state.token) {
+  //       const parsedToken = JSON.parse(state.token);
+  //       AuthService.setHeader(parsedToken);
+  //     } else {
+  //     this.$router.push("login");
+  //   }
+  //   return !!state.token;
+  // },
+
+// WORKING WITH OUT JSON.parse and " this.router "
+//   IS_LOGIN: state => {
+//     if (state.token) {
+//       const parsedToken = state.token;
+//       AuthService.setHeader(parsedToken);
+//     } else {
+//     Vue.router.push("login");
+//   }
+//   return !!state.token;
+// },
+
+
+
     ADDRESS_LIST: state => {
       return state.addressList;
     }
@@ -70,17 +95,20 @@ const store = new Vuex.Store({
         return user;
       });
     },
-    GET_ADDRESS_LIST: (context) => {
-      return Axios.get('http://localhost:3000/address').then(async response => {
-        if (response.status === 200 || response.status === 201) {
-          const {
-            payload
-          } = response.data;
-          await context.commit('SET_ADDRESS_LIST', payload);
-          return payload;
-        }
+    GET_ADDRESS_LIST: context => {
+      return AddressService.getAddressList().then(async payload => {
+        await context.commit("SET_ADDRESS_LIST", payload);
+        return payload;
       });
-    }
+    },
+    ADD_ADDRESS: (context, payload) => {
+      return AddressService.addAddress(payload).then(async payload => {
+        const addressList = context.state.addressList;
+        addressList.push(payload);
+        await context.commit("SET_ADDRESS_LIST", addressList);
+        return payload;
+      });
+    },
   }
 });
 

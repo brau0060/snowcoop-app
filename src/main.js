@@ -23,7 +23,7 @@ Vue.use(VueGoogleMaps, {
   }
 })
 
-console.log(process.env.VUE_APP_GOOGLE_API_KEY);
+Vue.router = router;
 
 new Vue({
   router,

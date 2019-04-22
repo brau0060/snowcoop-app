@@ -1,10 +1,9 @@
 <template>
   <div id="app">
     <el-container>
-      <!-- REMOVE side-navigation FROM APP so solve back button issue -->
-      <!-- Issue:
-      on back button user is not logged out and router
-      link displayes login with dashboard sidebar -->
+      <el-aside width="228px" v-if="isLogIn">
+        <side-navigation/>
+      </el-aside>
       <el-main>
         <router-view></router-view>
       </el-main>
