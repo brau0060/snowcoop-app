@@ -16,14 +16,14 @@ body {
 }
 .pac-container{
   border-radius: 4px;
-  z-index:500000;
+  z-index: 1000000;
 }
 .pac-item{
   padding-top:10px;
   padding-bottom:10px;
 }
 .pac-item:hover{
-  background-color: #add4fe
+  background-color: #a4d4f6;
 }
 .pac-container::after{
   display:none;

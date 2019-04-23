@@ -2,35 +2,36 @@
   <div id="formAddAddress">
       <el-dialog
         title="Add New Address"
+        @close="handleClose"
         :visible.sync="showForm"
         width="70%">
         <span>
           <div class="form-body-wrapper">
               <el-form :model="formData" ref="formData" @focusout.native="updateIsFormValidated">
                 <el-form-item>
-                    <gmap-autocomplete class="el-input__inner" @place_changed="setPlace" placeholder="Enter Address" >
+                    <gmap-autocomplete class="el-input__inner" :value="addressInput" placeholder="Enter Address" @place_changed="setPlace">
                     </gmap-autocomplete>
                   </el-form-item>
             
 
                   <div v-if="place">
                     <el-form-item :rules="rules.street" prop="street">
-                      <el-input placeholder="Street" v-model="formData.street" :disable="true"></el-input>
+                      <el-input placeholder="Street" v-model="formData.street" :disabled="true"></el-input>
                     </el-form-item>
                     <el-form-item :rules="rules.city" prop="city">
-                      <el-input placeholder="City" v-model="formData.city" :disable="true"></el-input>
+                      <el-input placeholder="City" v-model="formData.city" :disabled="true"></el-input>
                     </el-form-item>
                     <el-form-item :rules="rules.province" prop="province">
-                      <el-input placeholder="Province" v-model="formData.province" :disable="true"></el-input>
+                      <el-input placeholder="Province" v-model="formData.province" :disabled="true"></el-input>
                     </el-form-item>
                     <el-form-item :rules="rules.postalCode" prop="postalCode">
-                      <el-input placeholder="Postal Code" v-model="formData.postalCode" :disable="true"></el-input>
+                      <el-input placeholder="Postal Code" v-model="formData.postalCode" :disabled="true"></el-input>
                     </el-form-item>
                     <el-form-item :rules="rules.lat" prop="lat">
-                      <el-input placeholder="Latitude" v-model="formData.lat" :disable="true"></el-input>
+                      <el-input placeholder="Latitude" v-model="formData.lat" :disabled="true"></el-input>
                     </el-form-item>
                     <el-form-item :rules="rules.lng" prop="lng">
-                      <el-input placeholder="Longtude" v-model="formData.lng" :disable="true"></el-input>
+                      <el-input placeholder="Longtude" v-model="formData.lng" :disabled="true"></el-input>
                     </el-form-item>
                   </div>
               </el-form>

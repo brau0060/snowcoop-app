@@ -5,12 +5,12 @@ export default {
         showForm: false,
         place: null,
         formData: {
-            street:null,
-            city:null,
-            province:null,
-            postalCode:null,
-            lat:null,
-            lng:null
+            street: null,
+            city: null,
+            province: null,
+            postalCode: null,
+            lat: null,
+            lng: null
         },
         rules: {
             street: [{ required: true }],
@@ -20,7 +20,8 @@ export default {
             lat: [{ required: true }],
             lng: [{ required: true }]
         },
-        isFormValidated: false
+        isFormValidated: false,
+        addressInput: null
     };
 },
     methods: {
@@ -43,7 +44,12 @@ export default {
                     lat: this.formData.lat,
                     lng: this.formData.lng
                 };
-                this.$store.dispatch("ADD_ADDRESS", address).then(address => this.onAddAddressSuccessful(address), error => this.onAddAddressFailed(error));
+                this.$store
+                .dispatch("ADD_ADDRESS", address)
+                .then(
+                    address => this.onAddAddressSuccessful(address),
+                    error => this.onAddAddressFailed(error)
+                );
             }
         },
         onAddAddressSuccessful(address) {
@@ -56,11 +62,9 @@ export default {
             console.error(error);
             this.toggleForm(false);
         },
-        toggleForm(showForm) {
-            this.showForm = showForm;
-        },
+
         setPlace(place) {
-            const {address_components, geometry} = place;
+            const { address_components, geometry } = place;
             const address = this.buildAddressData(address_components, geometry);
 
             if(address) {
@@ -74,28 +78,48 @@ export default {
             }
         },
 
+        toggleForm(showForm) {
+            this.showForm = showForm;
+        },
+
+        handleClose() {
+            this.place = null;
+            this.formData.street = null;
+            this.formData.city = null;
+            this.formData.province = null;
+            this.formData.postalCode = null;
+            this.formData.lat = null;
+            this.formData.lng = null;
+            this.addressInput = null;
+        },
+
         buildAddressData(components, geometry) {
             const address = {};
             address.lat = geometry.location.lat().toString();
             address.lng = geometry.location.lng().toString();
 
             components.forEach(component => {
-                if (component.types[0] === "streetNumber" ){
-                    address.streetNumber = component.short_name;
-                }
-                if (component.types[0] === "route" ){
-                    address.streetName = component.short_name;
-                }
-                if (component.types[0] === "locality" ){
+              
+                if (component.types[0] === "locality") {
                     address.city = component.short_name;
                 }
-                if (component.types[0] === "administrative_area_level_1" ){
+
+                if (component.types[0] === "streetNumber") {
+                    address.streetNumber = component.short_name;
+                }
+
+                if (component.types[0] === "route") {
+                    address.streetName = component.short_name;
+                }
+
+                if (component.types[0] === "administrative_area_level_1") {
                     address.province = component.short_name;
                 }
                 if (component.types[0] === "postal_code" ){
                     address.postalCode = component.short_name;
                 }
             });
+
             return address;
         }
     }

@@ -15,6 +15,7 @@ const store = new Vuex.Store({
     USER: state => {
       return state.user;
     },
+    
     IS_LOGIN: state => {
       if (state.token) {
         AuthService.setHeader(state.token)
@@ -33,17 +34,6 @@ const store = new Vuex.Store({
   //   }
   //   return !!state.token;
   // },
-
-// WORKING WITH OUT JSON.parse and " this.router "
-//   IS_LOGIN: state => {
-//     if (state.token) {
-//       const parsedToken = state.token;
-//       AuthService.setHeader(parsedToken);
-//     } else {
-//     Vue.router.push("login");
-//   }
-//   return !!state.token;
-// },
 
 
 
@@ -95,7 +85,7 @@ const store = new Vuex.Store({
         return user;
       });
     },
-    GET_ADDRESS_LIST: context => {
+    GET_ADDRESS_LIST: (context) => {
       return AddressService.getAddressList().then(async payload => {
         await context.commit("SET_ADDRESS_LIST", payload);
         return payload;
