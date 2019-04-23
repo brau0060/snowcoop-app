@@ -1,4 +1,4 @@
-// Immport SideNavigation
+// import map view and form to add addreses to the list page
 import mapView from '../../shared/map-view/map-view.component.vue';
 import formAddAddress from './form-add-address/form-add-address.component.vue';
 export default {

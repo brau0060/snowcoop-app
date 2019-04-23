@@ -11,6 +11,7 @@ const store = new Vuex.Store({
     user: null|| JSON.parse(localStorage.getItem("user")),
     addressList: null,
   },
+
   getters: {
     USER: state => {
       return state.user;
