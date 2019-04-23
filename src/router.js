@@ -11,7 +11,7 @@ const router = new VueRouter({
     },
     {
       path: '/login',
-      component: loginPage
+      component: loginPage,
     },
     {
       path: '/register',
@@ -20,6 +20,7 @@ const router = new VueRouter({
     {
       path: '/dashboard',
       component: dashboardPage,
+      // to acsess this page you need to be logged in
       meta: {
         requiresAuth: true
       }
@@ -28,6 +29,7 @@ const router = new VueRouter({
     {
       path: '/list',
       component: listPage,
+      // to acsess this page you need to be logged in
       meta: {
         requireAuth: true
       }

@@ -25,6 +25,7 @@ export default {
     this.initPlaces();
   },
   methods: {
+    // creates a dinamic map position with variables that can be changed by the user
     initPlaces() {
       this.markers = this.addressList.map(address => this.buildMarker(address));
       this.center = this.markers[0].position;

@@ -3,6 +3,23 @@
     <el-container>
       <el-main>
         <p class="name">Hi {{ $store.state.user.firstName }}, welcome to snowcoop</p>
+        <!-- Add map view to the dashboard -->
+           <div class="list-wrapper">
+          <div class="list-header">
+            <span class="list-title" v-if="addressList">
+              {{ `You have ${addressList.length} addresses to complete` }}
+              </span>
+            <div class="list-header-button-wrapper">
+              <button @click.prevent="showForm()">Add</button>
+            </div>
+          </div>
+          <div class="list-view-wrapper">
+            <el-card class="map-view-card">
+              <!-- toggel list alse to hide list of addresses -->
+              <map-view v-if="addressList" v-bind:showList="false" v-bind:addressList="addressList"></map-view>
+            </el-card>
+          </div>
+        </div>
       </el-main>
     </el-container>
   </div>

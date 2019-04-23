@@ -9,11 +9,12 @@
           <div class="form-body-wrapper">
               <el-form :model="formData" ref="formData" @focusout.native="updateIsFormValidated">
                 <el-form-item>
+                  <!-- auto completes fields with the gogle api info -->
                     <gmap-autocomplete class="el-input__inner" :value="addressInput" placeholder="Enter Address" @place_changed="setPlace">
                     </gmap-autocomplete>
                   </el-form-item>
             
-
+                  <!-- Build address form -->
                   <div v-if="place">
                     <el-form-item :rules="rules.street" prop="street">
                       <el-input placeholder="Street" v-model="formData.street" :disabled="true"></el-input>
@@ -37,6 +38,7 @@
               </el-form>
             </div>
         </span>
+        <!-- Submit button -->
         <span slot="footer" class="dialog-footer">
           <el-button class="submit-button" @click="submit">Submit</el-button>
         </span>

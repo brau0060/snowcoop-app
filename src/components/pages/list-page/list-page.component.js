@@ -12,6 +12,7 @@ export default {
       addressList: null,
     }
   },
+  //Gets address list
   mounted(){
     /* eslint-disable */ 
     console.log('mounted...');
@@ -26,6 +27,7 @@ export default {
     // Get user name from getter only if loged in
     // If user is not loged in re-route to login
     pageInfo() {
+      // check if logged in
       if (this.$store.getters.IS_LOGIN === true) {
         // page title;
         return 'List Page';
@@ -36,6 +38,7 @@ export default {
     }
   },
   methods: {
+    // this function will show the list of addresses if set to true
     showForm() {
       this.$refs.formAddress.toggleForm(true);
     }
